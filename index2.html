@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React Components</title>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <link rel="stylesheet" href="main2.css">
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+
+    var Letter = React.createClass({
+      render: function() {
+        var letterStyle = {
+          padding: 10,
+          margin: 10,
+          backgroundColor: this.props.bgcolor,
+          color: this.props.lettercolor,
+          display: "inline-Block",
+          fontFamily: "monospace",
+          fontSize: "32",
+          textAlign: "center"
+        };
+
+        return(
+          <div style={letterStyle}>
+            {this.props.children}
+          </div>
+        )
+      }
+    });
+
+    ReactDOM.render(
+      <div>
+        <Letter lettercolor="white" bgcolor="red">A</Letter>
+        <Letter lettercolor="black" bgcolor="orange">E</Letter>
+        <Letter lettercolor="white" bgcolor="blue">I</Letter>
+        <Letter lettercolor="black" bgcolor="green">O</Letter>
+        <Letter lettercolor="white" bgcolor="brown">U</Letter>
+      </div>,
+      document.querySelector("#container")
+    );
+
+  </script>
+
+</body>
+</html>

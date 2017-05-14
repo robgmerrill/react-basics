@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React Components</title>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <div id="container"></div>
+  <script type="text/babel">
+    var HelloWorld = React.createClass({
+      render: function() {
+        return(
+          // the way you access a property is by calling it via the props property that
+          // every component has access to.
+          // In JSX, if you want something to get evaluated as an express, you
+          // need to wrap that something inside curly brackets.
+          <p>Hello, {this.props.greetTarget}!</p>
+        )
+      }
+    });
+
+    var AnotherComponent = React.createClass({
+      render: function() {
+        return(
+          <h1>A second, {this.props.greetTarget}!!</h1>
+        )
+      }
+    });
+
+    var GoDodgers = React.createClass({
+      render: function() {
+        return(
+          <h1><em>Go {this.props.greetTarget}</em></h1>
+        )
+      }
+    });
+
+    var FavoriteCodingLanguage = React.createClass({
+      render: function() {
+        return(
+          <h2><em><i>JavaScript</i></em></h2>
+        )
+      }
+    });
+
+    var Buttonify = React.createClass({
+      render: function(){
+        return(
+          <div>
+            // we set a custom property called behavior 
+            <button type={this.props.behavior}>
+              {this.props.children}
+            </button>
+          </div>
+        )
+      }
+    });
+
+    ReactDOM.render(
+      <div>
+        <Buttonify behavior="Submit">Send Data</Buttonify>
+        <HelloWorld greetTarget="Rob"/>
+        <AnotherComponent greetTarget="component" />
+        <GoDodgers greetTarget="Giants"/>
+        <FavoriteCodingLanguage />
+      </div>,
+      document.querySelector("#container")
+    );
+
+  </script>
+
+</body>
+</html>
